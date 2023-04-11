@@ -7,22 +7,32 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Landing');
+        }}>
+        <Text>Home Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-function LandingScreen() {
+function LandingScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.pop();
+        }}>
+        <Text>Landing Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -35,6 +45,9 @@ function App(): JSX.Element {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
+          presentation: 'modal',
+          animationTypeForReplace: 'push',
+          animation: 'slide_from_right',
         }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Landing" component={LandingScreen} />
