@@ -1,9 +1,14 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
-  const response = await fetch('https://api.adviceslip.com/advice');
-  return response;
-});
+export const fetchTodos = createAsyncThunk(
+  'todos/fetchTodos',
+  async (userId: number, thunkApi) => {
+    console.log('checking fetching async number ', userId);
+    thunkApi.dispatch(loginSuccess(false));
+    const response = await fetch('https://api.adviceslip.com/advice');
+    return response;
+  },
+);
 // Slice
 const slice = createSlice({
   name: 'user',
@@ -26,7 +31,6 @@ const slice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        const newEntities = {};
         console.log('Working on ', action.payload);
         state.status = 'idle';
       })

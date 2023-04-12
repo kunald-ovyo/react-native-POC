@@ -35,7 +35,7 @@ function LandingScreen({navigation}) {
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <TouchableOpacity
         onPress={() => {
-          dispatch(fetchTodos());
+          dispatch(fetchTodos(1235));
           navigation.pop();
         }}>
         <Text>Landing Screen</Text>
