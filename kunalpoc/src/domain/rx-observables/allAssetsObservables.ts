@@ -1,3 +1,3 @@
-import {BehaviorSubject} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 
-export const allAssetsObserver = new BehaviorSubject(0);
+export const allAssetsObserver = new ReplaySubject();

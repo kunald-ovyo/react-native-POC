@@ -5,10 +5,9 @@ export interface ThemeAndText {
   secondaryColor: string;
   backGroundColor: string;
   headingText: {};
+  baseContainerStyle: {};
 }
 
-export const themeContext = createContext<Partial<ThemeAndText> | undefined>(
-  undefined,
-);
+export const themeContext = createContext<Partial<ThemeAndText>>({});
 
 export const ThemeProvider = themeContext.Provider;

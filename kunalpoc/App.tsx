@@ -14,7 +14,7 @@ import {
   ThemeProvider,
   ThemeAndText,
 } from './src/presentation/context/ThemeContext';
-import {useColorScheme} from 'react-native/types';
+import {useColorScheme} from 'react-native';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,11 +25,21 @@ function App(): JSX.Element {
             primaryColor: 'white',
             secondaryColor: 'yellow',
             backGroundColor: 'black',
+            baseContainerStyle: {
+              flex: 1,
+              flexDirection: 'column',
+              backgroundColor: '#17171c',
+            },
           }
         : {
             primaryColor: 'white',
             secondaryColor: 'yellow',
             backGroundColor: 'black',
+            baseContainerStyle: {
+              flex: 1,
+              flexDirection: 'column',
+              backgroundColor: '#fffff',
+            },
           },
     [isDarkMode],
   );
