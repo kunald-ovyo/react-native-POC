@@ -1,5 +1,5 @@
-import {View, FlatList, StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
+import {View, FlatList, StyleSheet, Text, ImageBackground} from 'react-native';
+import React from 'react';
 import {Dimensions} from 'react-native';
 import {assetEntity} from '../../data/model/assets';
 const width = Dimensions.get('window').width;
@@ -19,8 +19,21 @@ function Carousel(props: Props) {
         legacyImplementation={false}
         data={props.data}
         renderItem={value => {
-          console.log('Kunal chekcing', value.item);
-          return <View style={styles.itenStyle} />;
+          const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=300`;
+          return (
+            <View
+              style={[
+                styles.itenStyle,
+                {backgroundColor: value.index % 2 ? 'red' : 'yellow'},
+              ]}>
+              <ImageBackground
+                source={{
+                  uri: imageUrl,
+                }}
+                style={{width: '100%', height: '100%'}}
+              />
+            </View>
+          );
         }}
         keyExtractor={photo => photo.id}
       />
@@ -42,7 +55,7 @@ const styles = StyleSheet.create({
   },
   itenStyle: {
     height: 200,
-    width: width - 40,
+    width: width - 38,
     backgroundColor: 'yellow',
   },
 });

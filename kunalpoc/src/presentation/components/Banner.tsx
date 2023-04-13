@@ -1,4 +1,4 @@
-import {View, Text, FlatList, StyleSheet} from 'react-native';
+import {View, Text, FlatList, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
 
 type Props = {
@@ -16,10 +16,20 @@ function Banner(props: Props) {
         showsHorizontalScrollIndicator={false}
         legacyImplementation={false}
         data={props.data}
-        renderItem={item => {
-          return <View style={styles.hscrollTile} />;
+        renderItem={value => {
+          const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-9x16.jpg?width=300`;
+          return (
+            <View style={styles.hscrollTile}>
+              <ImageBackground
+                source={{
+                  uri: imageUrl,
+                }}
+                style={{width: '100%', height: '100%'}}
+              />
+            </View>
+          );
         }}
-        keyExtractor={photo => photo.id}
+        keyExtractor={photo => photo.item}
       />
     </View>
   );
