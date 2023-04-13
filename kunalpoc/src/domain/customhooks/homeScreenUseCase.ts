@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
 import UseAssetRepository from '../../data/customhooks/allAssetsRepository';
+import {assetEntity} from '../../data/model/assets';
 import {allAssetsObserver} from '../rx-observables/allAssetsObservables';
 
 type HomeScreenData = {
-  carouselData: any[];
-  bannerData: any[];
+  carouselData: assetEntity[];
+  bannerData: assetEntity[];
   loading: boolean;
 };
 
@@ -13,17 +14,16 @@ const UsehomeScreenCase = () => {
 
   useEffect(() => {
     allAssetsObserver.subscribe(value => {
-      let carouselList: any[][] = [];
-      let bannerList: any[][] = [];
+      let carouselList: assetEntity[] = [];
+      let bannerList: assetEntity[] = [];
       value.forEach(element => {
         if (element.cd !== undefined) {
+          console.log('Kunal 1', element.lo);
           element.cd.forEach(asset => {
-            if (asset.lo !== undefined) {
-              if (asset.lo === 'carousel') {
-                carouselList.push(asset);
-              } else {
-                bannerList.push(asset);
-              }
+            if (element.lo === 'carousel') {
+              carouselList.push(asset);
+            } else {
+              bannerList.push(asset);
             }
           });
         }
