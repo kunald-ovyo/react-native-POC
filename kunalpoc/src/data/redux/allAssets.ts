@@ -13,7 +13,7 @@ export const fetchAllAssets = createAsyncThunk(
       )
       .then(function (response) {
         thunkApi.dispatch(fetchSuccess());
-        allAssetsObserver.next(response.data);
+        allAssetsObserver.next(response.data.data);
       })
       .catch(function (error) {
         thunkApi.dispatch(fetchFailed());

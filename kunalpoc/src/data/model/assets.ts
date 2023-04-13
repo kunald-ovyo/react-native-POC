@@ -1,3 +1,11 @@
+export interface assetEntity {
+  contentType: string;
+  id: string;
+  genres: string;
+  title: string;
+  rating: string;
+}
+
 export interface Root {
   header: Header;
   data: Daum[];
