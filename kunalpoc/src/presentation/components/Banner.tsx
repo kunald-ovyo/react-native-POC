@@ -16,7 +16,9 @@ function Banner(props: Props) {
         showsHorizontalScrollIndicator={false}
         legacyImplementation={false}
         data={props.data}
-        renderItem={item => <View style={styles.hscrollTile} />}
+        renderItem={item => {
+          return <View style={styles.hscrollTile} />;
+        }}
         keyExtractor={photo => photo.id}
       />
     </View>

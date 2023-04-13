@@ -1,10 +1,11 @@
 import {View, FlatList, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Dimensions} from 'react-native';
+import {assetEntity} from '../../data/model/assets';
 const width = Dimensions.get('window').width;
 
 type Props = {
-  data: any[];
+  data: assetEntity[];
   onClickTile: Function;
 };
 
@@ -17,7 +18,10 @@ function Carousel(props: Props) {
         showsHorizontalScrollIndicator={false}
         legacyImplementation={false}
         data={props.data}
-        renderItem={item => <View style={styles.itenStyle} />}
+        renderItem={value => {
+          console.log('Kunal chekcing', value.item);
+          return <View style={styles.itenStyle} />;
+        }}
         keyExtractor={photo => photo.id}
       />
     </View>

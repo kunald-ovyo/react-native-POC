@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {themeContext} from './context/ThemeContext';
 import {ScrollView} from 'react-native-gesture-handler';

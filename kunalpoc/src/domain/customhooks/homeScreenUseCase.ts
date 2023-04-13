@@ -12,40 +12,49 @@ type HomeScreenData = {
 const UsehomeScreenCase = () => {
   const [getAssetsForHomeScreen] = UseAssetRepository();
 
+  const [homeScreenData, setHomeScreenData] = useState<HomeScreenData>({
+    carouselData: [],
+    bannerData: [],
+    loading: false,
+  });
+
   useEffect(() => {
     allAssetsObserver.subscribe(value => {
       let carouselList: assetEntity[] = [];
       let bannerList: assetEntity[] = [];
       value.forEach(element => {
         if (element.cd !== undefined) {
-          console.log('Kunal 1', element.lo);
           element.cd.forEach(asset => {
             if (element.lo === 'carousel') {
-              carouselList.push(asset);
+              carouselList.push({
+                contentType: asset.cty,
+                id: asset.id,
+                genres: asset.log,
+                title: asset.lon,
+                rating: asset.rat[0].v,
+              });
             } else {
-              bannerList.push(asset);
+              bannerList.push({
+                contentType: asset.cty,
+                id: asset.id,
+                genres: asset.log,
+                title: asset.lon,
+                rating: asset.rat[0].v,
+              });
             }
           });
         }
       });
 
-      console.log(
-        'Kunal checking carousel length , banner count',
-        carouselList.length,
-        bannerList.length,
-      );
+      setHomeScreenData(value => {
+        return {...value, carouselData: carouselList, bannerData: bannerList};
+      });
     });
     getAssetsForHomeScreen();
     return () => {
       allAssetsObserver.unsubscribe();
     };
-  }, [getAssetsForHomeScreen]);
-
-  const [homeScreenData, setHomeScreenData] = useState<HomeScreenData>({
-    carouselData: ['One', 'Two', 'Three', 'Four'],
-    bannerData: ['One', 'Two', 'Three', 'Four'],
-    loading: false,
-  });
+  }, []);
 
   return [homeScreenData];
 };
