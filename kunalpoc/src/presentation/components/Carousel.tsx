@@ -17,7 +17,6 @@ function Carousel(props: Props) {
   return (
     <View style={styles.baseContainer}>
       <FlatList
-        style={{flex: 1}}
         horizontal
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
