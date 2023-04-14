@@ -26,7 +26,7 @@ function Banner(props: Props) {
                   uri: imageUrl,
                 }}
                 style={styles.posterStyle}>
-                <Text style={{fontSize: 20}}>{value.item.title[0].n}</Text>
+                <Text style={styles.assetTitle}>{value.item.title[0].n}</Text>
               </ImageBackground>
             </View>
           );
@@ -38,6 +38,7 @@ function Banner(props: Props) {
 }
 export default React.memo(Banner);
 const styles = StyleSheet.create({
+  assetTitle: {fontSize: 20, color: 'white'},
   title: {fontWeight: 'bold', color: 'white', fontSize: 20},
   baseHOrrizontalScroll: {
     marginTop: 15,
