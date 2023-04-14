@@ -1,4 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {themeContext} from './context/ThemeContext';
@@ -6,6 +12,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import Carousel from './components/Carousel';
 import Banner from './components/Banner';
 import UsehomeScreenCase from '../domain/customhooks/HomeScreenUseCase';
+import Icon from 'react-native-vector-icons/dist/Entypo';
 
 const HomeScreen = () => {
   const themeFontStyleContext = useContext(themeContext);
@@ -34,11 +41,36 @@ const HomeScreen = () => {
           }
         })}
       </ScrollView>
+      <View style={styles.baseTabBar}>
+        <View style={styles.tabViewStyle}>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.tabTitleTextStyle}>
+              <Icon name={'video'} size={30} color={'white'} />
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.tabViewStyle}>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.tabTitleTextStyle}>
+              <Icon name={'home'} size={30} color={'white'} />
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  tabTitleTextStyle: {alignSelf: 'center'},
+  tabViewStyle: {flex: 1, justifyContent: 'center'},
+  baseTabBar: {
+    flexDirection: 'row',
+    bottom: 0,
+    height: 70,
+    backgroundColor: 'black',
+    justifyContent: 'space-between',
+  },
   baseScroll: {backgroundColor: 'black', flex: 1},
   baseSkeleton: {
     aspectRatio: 14 / 9,

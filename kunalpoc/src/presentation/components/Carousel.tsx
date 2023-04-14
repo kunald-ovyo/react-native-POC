@@ -1,4 +1,4 @@
-import {View, FlatList, StyleSheet, ImageBackground} from 'react-native';
+import {View, FlatList, StyleSheet, ImageBackground, Text} from 'react-native';
 import React from 'react';
 import {Dimensions} from 'react-native';
 import {assetEntity} from '../../data/model/Assets';
@@ -24,6 +24,7 @@ function Carousel(props: Props) {
         data={props.data}
         renderItem={value => {
           const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=600`;
+          console.log('Kunal checking one ', value.item.rating);
           return (
             <View>
               {orientation === 'PORTRAIT' ? (
@@ -34,6 +35,16 @@ function Carousel(props: Props) {
                     }}
                     style={styles.posterStylePortait}
                   />
+                  <Text
+                    style={{
+                      position: 'absolute',
+                      bottom: 10,
+                      right: 10,
+                      fontSize: 20,
+                      color: 'white',
+                    }}>
+                    {value.item.rating}
+                  </Text>
                 </View>
               ) : (
                 <View style={styles.itenStyleLandscape}>
