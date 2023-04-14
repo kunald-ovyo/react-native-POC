@@ -1,8 +1,8 @@
 import {View, FlatList, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
 import {Dimensions} from 'react-native';
-import {assetEntity} from '../../data/model/assets';
-import {generateString} from '../../domain/utils';
+import {assetEntity} from '../../data/model/Assets';
+import {generateString} from '../../domain/Utils';
 import {useOrientation} from '../UIHooks';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
   itenStyleLandscape: {
     aspectRatio: 16 / 9,
     width: height - 0.1 * height,
-    backgroundColor: 'yellow',
+    backgroundColor: 'grey',
   },
   itenStylePotrait: {
     aspectRatio: 16 / 9,
     width: width - 0.1 * width,
-    backgroundColor: 'yellow',
+    backgroundColor: 'grey',
   },
   posterStylePortait: {
     aspectRatio: 16 / 9,
@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
   },
   posterStyleLandscape: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'grey',
   },
 });

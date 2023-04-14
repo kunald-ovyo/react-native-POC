@@ -5,7 +5,7 @@ import {themeContext} from './context/ThemeContext';
 import {ScrollView} from 'react-native-gesture-handler';
 import Carousel from './components/Carousel';
 import Banner from './components/Banner';
-import UsehomeScreenCase from '../domain/customhooks/homeScreenUseCase';
+import UsehomeScreenCase from '../domain/customhooks/HomeScreenUseCase';
 
 const HomeScreen = () => {
   const themeFontStyleContext = useContext(themeContext);
@@ -15,7 +15,7 @@ const HomeScreen = () => {
     <SafeAreaView style={themeFontStyleContext.baseContainerStyle}>
       <ScrollView style={styles.baseScroll}>
         <Carousel data={homeScreenData.carouselData} onClickTile={() => {}} />
-        <Banner data={homeScreenData.bannerData} title={'Banner videos'} />
+        <Banner data={homeScreenData.bannerData} title={'Banner '} />
         <Banner data={homeScreenData.bannerData} title={'Banner videos'} />
       </ScrollView>
     </SafeAreaView>

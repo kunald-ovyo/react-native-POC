@@ -1,6 +1,6 @@
 import {View, Text, FlatList, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
-import {generateString} from '../../domain/utils';
+import {generateString} from '../../domain/Utils';
 
 type Props = {
   data: any[];
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   hscrollTile: {
     aspectRatio: 9 / 16,
     width: 130,
-    backgroundColor: 'yellow',
+    backgroundColor: 'grey',
     marginRight: 10,
   },
   posterStyle: {

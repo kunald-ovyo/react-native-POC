@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import UseAssetRepository from '../../data/customhooks/allAssetsRepository';
-import {assetEntity} from '../../data/model/assets';
-import {allAssetsObserver} from '../rx-observables/allAssetsObservables';
+import UseAssetRepository from '../../data/customhooks/AllAssetsRepository';
+import {assetEntity} from '../../data/model/Assets';
+import {allAssetsObserver} from '../rx-observables/AllAssetsObservables';
 
 type HomeScreenData = {
   carouselData: assetEntity[];
