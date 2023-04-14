@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
-import {Root} from '../model/Assets';
+import {Root} from '../model/assets';
 import {allAssetsObserver} from '../../domain/rx-observables/AllAssetsObservables';
 
 export const fetchAllAssets = createAsyncThunk(

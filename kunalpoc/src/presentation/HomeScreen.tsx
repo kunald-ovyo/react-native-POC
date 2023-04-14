@@ -14,9 +14,25 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={themeFontStyleContext.baseContainerStyle}>
       <ScrollView style={styles.baseScroll}>
-        <Carousel data={homeScreenData.carouselData} onClickTile={() => {}} />
-        <Banner data={homeScreenData.bannerData} title={'Banner '} />
-        <Banner data={homeScreenData.bannerData} title={'Banner videos'} />
+        {homeScreenData.allAssetsData.map((element, index) => {
+          if (index === 0) {
+            return (
+              <Carousel
+                key={`carousal_${index}`}
+                data={element.data}
+                onClickTile={() => {}}
+              />
+            );
+          } else {
+            return (
+              <Banner
+                key={`carousal_${index}`}
+                data={element.data}
+                title={element.name[0].n}
+              />
+            );
+          }
+        })}
       </ScrollView>
     </SafeAreaView>
   );

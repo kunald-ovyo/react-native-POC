@@ -7,7 +7,7 @@
 
 import React, {useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import store from './src/data/redux/store';
+import store from './src/data/redux/Store';
 import StackNavition from './src/presentation/StackNavition';
 import {Provider} from 'react-redux';
 import {
