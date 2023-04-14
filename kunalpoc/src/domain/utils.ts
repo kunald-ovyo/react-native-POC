@@ -1,5 +1,3 @@
-import {Dimensions} from 'react-native';
-
 const characters =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

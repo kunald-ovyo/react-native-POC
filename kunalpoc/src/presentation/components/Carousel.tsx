@@ -14,6 +14,12 @@ type Props = {
 
 function Carousel(props: Props) {
   const orientation = useOrientation();
+  console.log('Kunal chceking orientation', orientation);
+  if (orientation === 'PORTRAIT') {
+    console.log('Kunal 1');
+  } else {
+    console.log('Kunal 2');
+  }
   return (
     <View style={styles.baseContainer}>
       <FlatList
@@ -24,20 +30,28 @@ function Carousel(props: Props) {
         legacyImplementation={false}
         data={props.data}
         renderItem={value => {
-          const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=300`;
+          const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=600`;
           return (
-            <View
-              style={
-                orientation === 'POTRAIT'
-                  ? styles.itenStylePotrait
-                  : styles.itenStyleLandscape
-              }>
-              <ImageBackground
-                source={{
-                  uri: imageUrl,
-                }}
-                style={styles.posterStyle}
-              />
+            <View>
+              {orientation === 'PORTRAIT' ? (
+                <View style={styles.itenStylePotrait}>
+                  <ImageBackground
+                    source={{
+                      uri: imageUrl,
+                    }}
+                    style={styles.posterStylePortait}
+                  />
+                </View>
+              ) : (
+                <View style={styles.itenStyleLandscape}>
+                  <ImageBackground
+                    source={{
+                      uri: imageUrl,
+                    }}
+                    style={styles.posterStyleLandscape}
+                  />
+                </View>
+              )}
             </View>
           );
         }}
@@ -63,18 +77,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itenStyleLandscape: {
-    height: 300,
+    aspectRatio: 16 / 9,
     width: height - 0.1 * height,
     backgroundColor: 'yellow',
   },
   itenStylePotrait: {
-    height: 200,
+    aspectRatio: 16 / 9,
     width: width - 0.1 * width,
     backgroundColor: 'yellow',
   },
-  posterStyle: {
-    width: '100%',
-    height: '100%',
+  posterStylePortait: {
+    aspectRatio: 16 / 9,
+    width: width - 0.1 * width,
     borderRadius: 10,
+  },
+  posterStyleLandscape: {
+    flex: 1,
+    backgroundColor: 'green',
   },
 });

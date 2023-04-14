@@ -1,5 +1,4 @@
 // useOrientation.tsx
-import {removeListener} from '@reduxjs/toolkit';
 import {useEffect, useState} from 'react';
 import {Dimensions} from 'react-native';
 
@@ -17,7 +16,7 @@ const isPortrait = () => {
  */
 export function useOrientation() {
   // State to hold the connection status
-  const [orientation, setOrientation] = useState<'PORTRAIT' | 'LANDSCAPE'>(
+  const [orientation, setOrientation] = useState<string>(
     isPortrait() ? 'PORTRAIT' : 'LANDSCAPE',
   );
 
