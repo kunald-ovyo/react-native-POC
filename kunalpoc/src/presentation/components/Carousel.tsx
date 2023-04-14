@@ -2,6 +2,7 @@ import {View, FlatList, StyleSheet, Text, ImageBackground} from 'react-native';
 import React from 'react';
 import {Dimensions} from 'react-native';
 import {assetEntity} from '../../data/model/assets';
+import {generateString} from '../../domain/utils';
 const width = Dimensions.get('window').width;
 
 type Props = {
@@ -35,7 +36,7 @@ function Carousel(props: Props) {
             </View>
           );
         }}
-        keyExtractor={photo => photo.id}
+        keyExtractor={value => `${value.id}${generateString(7)}`}
       />
     </View>
   );

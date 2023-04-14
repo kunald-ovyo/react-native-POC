@@ -1,5 +1,6 @@
 import {View, Text, FlatList, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
+import {generateString} from '../../domain/utils';
 
 type Props = {
   data: any[];
@@ -29,7 +30,7 @@ function Banner(props: Props) {
             </View>
           );
         }}
-        keyExtractor={photo => photo.item}
+        keyExtractor={value => `${value.id}${generateString(7)}`}
       />
     </View>
   );
@@ -38,15 +39,15 @@ export default React.memo(Banner);
 const styles = StyleSheet.create({
   title: {fontWeight: 'bold', color: 'white', fontSize: 30},
   baseHOrrizontalScroll: {
-    aspectRatio: 12 / 9,
+    aspectRatio: 10 / 9,
     backgroundColor: 'black',
     width: '90%',
     margin: '5%',
     borderColor: '#fff',
   },
   hscrollTile: {
-    height: 200,
-    width: 170,
+    aspectRatio: 9 / 16,
+    width: 140,
     backgroundColor: 'yellow',
     marginRight: 10,
   },
