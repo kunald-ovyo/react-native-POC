@@ -25,7 +25,7 @@ function Banner(props: Props) {
                 source={{
                   uri: imageUrl,
                 }}
-                style={{width: '100%', height: '100%'}}
+                style={styles.posterStyle}
               />
             </View>
           );
@@ -47,8 +47,12 @@ const styles = StyleSheet.create({
   },
   hscrollTile: {
     aspectRatio: 9 / 16,
-    width: 140,
+    width: 130,
     backgroundColor: 'yellow',
     marginRight: 10,
+  },
+  posterStyle: {
+    width: '100%',
+    height: '100%',
   },
 });

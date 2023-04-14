@@ -22,16 +22,12 @@ function Carousel(props: Props) {
         renderItem={value => {
           const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=300`;
           return (
-            <View
-              style={[
-                styles.itenStyle,
-                {backgroundColor: value.index % 2 ? 'red' : 'yellow'},
-              ]}>
+            <View style={[styles.itenStyle]}>
               <ImageBackground
                 source={{
                   uri: imageUrl,
                 }}
-                style={{width: '100%', height: '100%', borderRadius: 10}}
+                style={styles.posterStyle}
               />
             </View>
           );
@@ -60,5 +56,10 @@ const styles = StyleSheet.create({
     height: 200,
     width: width - 0.1 * width,
     backgroundColor: 'yellow',
+  },
+  posterStyle: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
   },
 });
