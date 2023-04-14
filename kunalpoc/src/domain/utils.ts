@@ -12,8 +12,3 @@ export function generateString(length: number) {
 
   return result;
 }
-
-export const isPortrait = () => {
-  const dim = Dimensions.get('screen');
-  return dim.height >= dim.width;
-};

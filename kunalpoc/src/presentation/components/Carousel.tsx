@@ -1,9 +1,11 @@
-import {View, FlatList, StyleSheet, Text, ImageBackground} from 'react-native';
+import {View, FlatList, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
 import {Dimensions} from 'react-native';
 import {assetEntity} from '../../data/model/assets';
 import {generateString} from '../../domain/utils';
+import {useOrientation} from '../UIHooks';
 const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 type Props = {
   data: assetEntity[];
@@ -11,9 +13,11 @@ type Props = {
 };
 
 function Carousel(props: Props) {
+  const orientation = useOrientation();
   return (
     <View style={styles.baseContainer}>
       <FlatList
+        style={{flex: 1}}
         horizontal
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
@@ -22,7 +26,12 @@ function Carousel(props: Props) {
         renderItem={value => {
           const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=300`;
           return (
-            <View style={[styles.itenStyle]}>
+            <View
+              style={
+                orientation === 'POTRAIT'
+                  ? styles.itenStylePotrait
+                  : styles.itenStyleLandscape
+              }>
               <ImageBackground
                 source={{
                   uri: imageUrl,
@@ -53,7 +62,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  itenStyle: {
+  itenStyleLandscape: {
+    height: 300,
+    width: height - 0.1 * height,
+    backgroundColor: 'yellow',
+  },
+  itenStylePotrait: {
     height: 200,
     width: width - 0.1 * width,
     backgroundColor: 'yellow',
