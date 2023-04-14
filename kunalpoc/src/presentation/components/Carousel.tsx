@@ -30,7 +30,7 @@ function Carousel(props: Props) {
                 source={{
                   uri: imageUrl,
                 }}
-                style={{width: '100%', height: '100%'}}
+                style={{width: '100%', height: '100%', borderRadius: 10}}
               />
             </View>
           );
@@ -45,17 +45,19 @@ export default React.memo(Carousel);
 
 const styles = StyleSheet.create({
   baseContainer: {
-    aspectRatio: 14 / 9,
+    aspectRatio: 16 / 9,
     backgroundColor: 'white',
     width: '90%',
     margin: '5%',
+    resizeMode: 'cover',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   itenStyle: {
     height: 200,
-    width: width - 38,
+    width: width - 0.1 * width,
     backgroundColor: 'yellow',
   },
 });
