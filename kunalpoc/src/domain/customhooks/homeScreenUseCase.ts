@@ -24,13 +24,16 @@ const UsehomeScreenCase = () => {
 
   useEffect(() => {
     allAssetsObserver.subscribe(value => {
+      console.log('THis is testing ');
       let carouselList: assetEntity[] = [];
       let bannerList: HomeScrenObjectList[] = [];
-      let workingObject: HomeScrenObjectList = {
-        name: '',
-        data: [],
-      };
+
       value.forEach(element => {
+        let workingObject: HomeScrenObjectList = {
+          name: '',
+          data: [],
+        };
+        console.log('Kunal checking name', element.lon[0].n);
         workingObject.name = element.lon;
         if (element.cd !== undefined) {
           element.cd.forEach(asset => {

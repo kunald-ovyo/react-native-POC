@@ -24,7 +24,6 @@ function Carousel(props: Props) {
         data={props.data}
         renderItem={value => {
           const imageUrl = `https://image-resizer-cloud-api.akamaized.net/image/${value.item.id}/0-16x9.jpg?width=600`;
-          console.log('Kunal checking one ', value.item.rating);
           return (
             <View>
               {orientation === 'PORTRAIT' ? (
