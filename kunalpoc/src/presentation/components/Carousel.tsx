@@ -14,12 +14,6 @@ type Props = {
 
 function Carousel(props: Props) {
   const orientation = useOrientation();
-  console.log('Kunal chceking orientation', orientation);
-  if (orientation === 'PORTRAIT') {
-    console.log('Kunal 1');
-  } else {
-    console.log('Kunal 2');
-  }
   return (
     <View style={styles.baseContainer}>
       <FlatList
