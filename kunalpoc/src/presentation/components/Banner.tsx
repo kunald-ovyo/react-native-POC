@@ -37,12 +37,14 @@ function Banner(props: Props) {
 }
 export default React.memo(Banner);
 const styles = StyleSheet.create({
-  title: {fontWeight: 'bold', color: 'white', fontSize: 30},
+  title: {fontWeight: 'bold', color: 'white', fontSize: 25},
   baseHOrrizontalScroll: {
-    aspectRatio: 10 / 9,
+    marginTop: 15,
+    marginBottom: 5,
+    height: 270,
     backgroundColor: 'black',
     width: '90%',
-    margin: '5%',
+    marginHorizontal: '5%',
     borderColor: '#fff',
   },
   hscrollTile: {

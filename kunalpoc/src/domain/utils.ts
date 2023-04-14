@@ -1,3 +1,5 @@
+import {Dimensions} from 'react-native';
+
 const characters =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -10,3 +12,8 @@ export function generateString(length: number) {
 
   return result;
 }
+
+export const isPortrait = () => {
+  const dim = Dimensions.get('screen');
+  return dim.height >= dim.width;
+};

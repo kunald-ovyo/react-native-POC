@@ -42,10 +42,11 @@ export default React.memo(Carousel);
 
 const styles = StyleSheet.create({
   baseContainer: {
+    marginTop: 15,
     aspectRatio: 16 / 9,
     backgroundColor: 'white',
     width: '90%',
-    margin: '5%',
+    marginHorizontal: '5%',
     resizeMode: 'cover',
     borderRadius: 10,
     overflow: 'hidden',
