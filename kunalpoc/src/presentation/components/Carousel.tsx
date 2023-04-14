@@ -35,16 +35,7 @@ function Carousel(props: Props) {
                     }}
                     style={styles.posterStylePortait}
                   />
-                  <Text
-                    style={{
-                      position: 'absolute',
-                      bottom: 10,
-                      right: 10,
-                      fontSize: 20,
-                      color: 'white',
-                    }}>
-                    {value.item.rating}
-                  </Text>
+                  <Text style={styles.textStyle}>{value.item.rating}</Text>
                 </View>
               ) : (
                 <View style={styles.itenStyleLandscape}>
@@ -68,6 +59,13 @@ function Carousel(props: Props) {
 export default React.memo(Carousel);
 
 const styles = StyleSheet.create({
+  textStyle: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    fontSize: 20,
+    color: 'white',
+  },
   baseContainer: {
     marginTop: 15,
     aspectRatio: 16 / 9,
