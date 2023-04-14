@@ -25,8 +25,9 @@ function Banner(props: Props) {
                 source={{
                   uri: imageUrl,
                 }}
-                style={styles.posterStyle}
-              />
+                style={styles.posterStyle}>
+                <Text style={{fontSize: 20}}>{value.item.title[0].n}</Text>
+              </ImageBackground>
             </View>
           );
         }}
