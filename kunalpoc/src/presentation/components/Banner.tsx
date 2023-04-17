@@ -9,7 +9,7 @@ type Props = {
 
 function Banner(props: Props) {
   return (
-    <View style={styles.baseHOrrizontalScroll}>
+    <View testID="banner" style={styles.baseHOrrizontalScroll}>
       <Text style={styles.title}>{props.title}</Text>
       <FlatList
         horizontal

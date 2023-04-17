@@ -15,7 +15,7 @@ type Props = {
 function Carousel(props: Props) {
   const orientation = useOrientation();
   return (
-    <View style={styles.baseContainer}>
+    <View testID="carousel" style={styles.baseContainer}>
       <FlatList
         horizontal
         pagingEnabled={true}

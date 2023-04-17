@@ -23,6 +23,7 @@ const HomeScreen = () => {
       <ScrollView style={styles.baseScroll}>
         {homeScreenData.allAssetsData.map((element, index) => {
           if (index === 0) {
+            console.log('Kunal executig carousel');
             return (
               <Carousel
                 key={`carousal_${index}`}
@@ -31,6 +32,7 @@ const HomeScreen = () => {
               />
             );
           } else {
+            console.log('banner widget');
             return (
               <Banner
                 key={`carousal_${index}`}
