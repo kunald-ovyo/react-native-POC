@@ -23,6 +23,7 @@ const UsehomeScreenCase = () => {
   });
 
   useEffect(() => {
+    console.log('Kunal chekcking 2 ');
     allAssetsObserver.subscribe(value => {
       let bannerList: HomeScrenObjectList[] = [];
 
@@ -32,11 +33,10 @@ const UsehomeScreenCase = () => {
           data: [],
         };
         let carouselList: assetEntity[] = [];
-
+        console.log('Kunal chekcking 2 ');
         workingObject.name = element.lon;
         if (element.cd !== undefined) {
           element.cd.forEach(asset => {
-            console.log('Kunal checkinh ', asset.lon);
             carouselList.push({
               contentType: asset.cty,
               id: asset.id,

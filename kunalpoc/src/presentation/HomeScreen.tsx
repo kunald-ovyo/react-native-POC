@@ -1,14 +1,13 @@
 import {
   StyleSheet,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
+  ScrollView,
 } from 'react-native';
 import React, {useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {themeContext} from './context/ThemeContext';
-import {ScrollView} from 'react-native-gesture-handler';
 import Carousel from './components/Carousel';
 import Banner from './components/Banner';
 import UsehomeScreenCase from '../domain/customhooks/HomeScreenUseCase';
@@ -18,6 +17,7 @@ const HomeScreen = () => {
   const themeFontStyleContext = useContext(themeContext);
   const [homeScreenData] = UsehomeScreenCase();
 
+  console.log('Kunal home screen loading ', homeScreenData);
   return (
     <SafeAreaView style={themeFontStyleContext.baseContainerStyle}>
       <ScrollView style={styles.baseScroll}>
