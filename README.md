@@ -37,5 +37,10 @@ Our Goals are
 - adding next event in observable from domain layer so that the hook of use case gets event executed in subscription 
 
 
+## Improvements 
+- We can add height width normalization library for responsive layouts and not relay on aspect raio too much
+- We can save dat in secondary storage like realm or async storage so that we can check if data exists and display before its loaded from remote 
+- Pull to refresh from home screen
+
 
 
