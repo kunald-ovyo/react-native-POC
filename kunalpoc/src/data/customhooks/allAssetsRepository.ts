@@ -7,7 +7,8 @@ export default function UseAssetRepository() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const pageReference = useRef<number>(0);
   const getAssetsForHomeScreen = () => {
-    pageReference.current += 1;
+    pageReference.current = pageReference.current + 1;
+    console.log('Kunal getting page number ', pageReference.current);
     dispatch(fetchAllAssets(pageReference.current));
   };
   return [getAssetsForHomeScreen];

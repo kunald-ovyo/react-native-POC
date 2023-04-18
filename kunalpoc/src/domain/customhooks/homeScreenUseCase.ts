@@ -24,6 +24,7 @@ const UsehomeScreenCase = () => {
   });
 
   const getNextPageAssets = useCallback(() => {
+    console.log('Kunal getting next page');
     getAssetsForHomeScreen();
   }, []);
 
