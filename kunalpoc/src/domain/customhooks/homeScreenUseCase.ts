@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import UseAssetRepository from '../../data/customhooks/AllAssetsRepository';
 import {assetEntity} from '../../data/model/Assets';
 import {allAssetsObserver} from '../rx-observables/AllAssetsObservables';
@@ -14,6 +14,7 @@ type HomeScrenObjectList = {name: {}; data: assetEntity[]};
 
 const UsehomeScreenCase = () => {
   const [getAssetsForHomeScreen] = UseAssetRepository();
+  const tempReferenceAllAssets = useRef<HomeScrenObjectList[]>([]);
 
   const [homeScreenData, setHomeScreenData] = useState<HomeScreenData>({
     allAssetsData: [],
@@ -22,35 +23,57 @@ const UsehomeScreenCase = () => {
     loading: false,
   });
 
+  const getNextPageAssets = useCallback(() => {
+    getAssetsForHomeScreen();
+  }, []);
+
   useEffect(() => {
     allAssetsObserver.subscribe(value => {
       let bannerList: HomeScrenObjectList[] = [];
 
-      value.forEach(element => {
-        let workingObject: HomeScrenObjectList = {
-          name: '',
-          data: [],
-        };
-        let carouselList: assetEntity[] = [];
-        workingObject.name = element.lon;
-        if (element.cd !== undefined) {
-          element.cd.forEach(asset => {
-            carouselList.push({
-              contentType: asset.cty,
-              id: asset.id,
-              genres: asset.log,
-              title: asset.lon,
-              rating: asset.rat[0].v,
+      if (value !== undefined && value !== null) {
+        value.forEach(element => {
+          let workingObject: HomeScrenObjectList = {
+            name: '',
+            data: [],
+          };
+          let carouselList: assetEntity[] = [];
+          workingObject.name = element.lon;
+          if (element.cd !== undefined) {
+            element.cd.forEach(asset => {
+              const rating = asset.rat !== undefined ? asset?.rat[0]?.v : '+UA';
+              carouselList.push({
+                contentType: asset.cty,
+                id: asset.id,
+                genres: asset.log,
+                title: asset.lon,
+                rating: rating,
+              });
             });
-          });
-        }
-        workingObject.data = carouselList;
-        bannerList.push(workingObject);
-      });
+          }
+          workingObject.data = carouselList;
+          bannerList.push(workingObject);
+        });
 
-      setHomeScreenData(value => {
-        return {...value, allAssetsData: bannerList};
-      });
+        tempReferenceAllAssets.current = [
+          ...tempReferenceAllAssets.current,
+          ...bannerList,
+        ];
+
+        console.log(
+          'cheking length of tempReferenceAllAssets',
+          tempReferenceAllAssets.current.length,
+        );
+
+        setHomeScreenData(value => {
+          return {
+            ...value,
+            allAssetsData: tempReferenceAllAssets.current,
+          };
+        });
+      } else {
+        console.log('Logging failed pagination data ', value);
+      }
     });
     getAssetsForHomeScreen();
     return () => {
@@ -58,7 +81,7 @@ const UsehomeScreenCase = () => {
     };
   }, []);
 
-  return [homeScreenData];
+  return [homeScreenData, getNextPageAssets];
 };
 
 export default UsehomeScreenCase;

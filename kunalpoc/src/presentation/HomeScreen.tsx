@@ -5,7 +5,7 @@ import {
   View,
   ScrollView,
 } from 'react-native';
-import React, {useContext} from 'react';
+import React, {useCallback, useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {themeContext} from './context/ThemeContext';
 import Carousel from './components/Carousel';
@@ -15,12 +15,29 @@ import Icon from 'react-native-vector-icons/dist/Entypo';
 
 const HomeScreen = () => {
   const themeFontStyleContext = useContext(themeContext);
-  const [homeScreenData] = UsehomeScreenCase();
+  const [homeScreenData, getNextPageAssets] = UsehomeScreenCase();
 
-  console.log('Kunal home screen loading ', homeScreenData);
+  const isCloseToBottom = useCallback(
+    ({layoutMeasurement, contentOffset, contentSize}) => {
+      const paddingToBottom = 20;
+      return (
+        layoutMeasurement.height + contentOffset.y >=
+        contentSize.height - paddingToBottom
+      );
+    },
+    [],
+  );
+
   return (
     <SafeAreaView style={themeFontStyleContext.baseContainerStyle}>
-      <ScrollView style={styles.baseScroll}>
+      <ScrollView
+        onScroll={({nativeEvent}) => {
+          if (isCloseToBottom(nativeEvent)) {
+            getNextPageAssets();
+          }
+        }}
+        scrollEventThrottle={400}
+        style={styles.baseScroll}>
         {homeScreenData.allAssetsData.map((element, index) => {
           if (index === 0) {
             console.log('Kunal executig carousel');
@@ -32,7 +49,6 @@ const HomeScreen = () => {
               />
             );
           } else {
-            console.log('banner widget');
             return (
               <Banner
                 key={`carousal_${index}`}

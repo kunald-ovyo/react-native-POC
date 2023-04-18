@@ -59,10 +59,6 @@ it('renders correctly', async () => {
     </ThemeProvider>,
   );
 
-  // const findAllByTestID = instance =>
-  //   instance.findAll(el => el.props.testID === 'banner' && el.type === 'View');
-  // expect(findAllByTestID(app).length).toEqual(mockAllAssetREsponse.length - 1);
-
   const banners = app.root.findAllByProps({testID: 'banner'});
   expect(banners.length / 2).toEqual(mockAllAssetREsponse.length - 1);
 });
