@@ -24,16 +24,16 @@ const UsehomeScreenCase = () => {
   });
 
   const getNextPageAssets = useCallback(() => {
-    console.log('Kunal getting next page');
     getAssetsForHomeScreen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    allAssetsObserver.subscribe(value => {
+    allAssetsObserver.subscribe((value: any) => {
       let bannerList: HomeScrenObjectList[] = [];
 
       if (value !== undefined && value !== null) {
-        value.forEach(element => {
+        value.forEach((element: any) => {
           let workingObject: HomeScrenObjectList = {
             name: '',
             data: [],
@@ -41,7 +41,7 @@ const UsehomeScreenCase = () => {
           let carouselList: assetEntity[] = [];
           workingObject.name = element.lon;
           if (element.cd !== undefined) {
-            element.cd.forEach(asset => {
+            element.cd.forEach((asset: any) => {
               const rating = asset.rat !== undefined ? asset?.rat[0]?.v : '+UA';
               carouselList.push({
                 contentType: asset.cty,
@@ -80,6 +80,7 @@ const UsehomeScreenCase = () => {
     return () => {
       allAssetsObserver.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [homeScreenData, getNextPageAssets];

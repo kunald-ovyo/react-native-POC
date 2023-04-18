@@ -8,7 +8,6 @@ export default function UseAssetRepository() {
   const pageReference = useRef<number>(0);
   const getAssetsForHomeScreen = () => {
     pageReference.current = pageReference.current + 1;
-    console.log('Kunal getting page number ', pageReference.current);
     dispatch(fetchAllAssets(pageReference.current));
   };
   return [getAssetsForHomeScreen];

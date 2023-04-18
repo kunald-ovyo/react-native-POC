@@ -10,7 +10,7 @@ import {mockAllAssetREsponse} from '../MockData/mockAllAssets';
 
 jest.mock('../src/domain/customhooks/HomeScreenUseCase');
 
-UsehomeScreenCase.mockReturnValue([
+(UsehomeScreenCase as jest.Mock).mockReturnValue([
   {
     allAssetsData: mockAllAssetREsponse,
     carouselData: ['One'],

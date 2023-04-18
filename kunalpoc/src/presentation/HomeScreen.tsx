@@ -18,7 +18,7 @@ const HomeScreen = () => {
   const [homeScreenData, getNextPageAssets] = UsehomeScreenCase();
 
   const isCloseToBottom = useCallback(
-    ({layoutMeasurement, contentOffset, contentSize}) => {
+    ({layoutMeasurement, contentOffset, contentSize}: any) => {
       const paddingToBottom = 20;
       return (
         layoutMeasurement.height + contentOffset.y >=
@@ -38,9 +38,8 @@ const HomeScreen = () => {
         }}
         scrollEventThrottle={400}
         style={styles.baseScroll}>
-        {homeScreenData.allAssetsData.map((element, index) => {
+        {homeScreenData.allAssetsData.map((element: any, index: any) => {
           if (index === 0) {
-            console.log('Kunal executig carousel');
             return (
               <Carousel
                 key={`carousal_${index}`}
