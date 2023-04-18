@@ -83,7 +83,7 @@ const UsehomeScreenCase = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return [homeScreenData, getNextPageAssets];
+  return [homeScreenData, getNextPageAssets] as const;
 };
 
 export default UsehomeScreenCase;

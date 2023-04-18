@@ -7,6 +7,7 @@ import store from '../src/data/redux/Store';
 import {ThemeProvider} from '../src/presentation/context/ThemeContext';
 import UsehomeScreenCase from '../src/domain/customhooks/HomeScreenUseCase';
 import {mockAllAssetREsponse} from '../MockData/mockAllAssets';
+import React from 'react';
 
 jest.mock('../src/domain/customhooks/HomeScreenUseCase');
 
@@ -18,10 +19,8 @@ jest.mock('../src/domain/customhooks/HomeScreenUseCase');
     loading: false,
   },
 ]);
-// eslint-disable-next-line react/react-in-jsx-scope
 const tree = create(<TrialTest />);
 
-// eslint-disable-next-line react/react-in-jsx-scope
 const another = create(<MyScreen />);
 jest.runAllTimers();
 
@@ -41,7 +40,6 @@ it('renders correctly', async () => {
   jest.runAllTimers();
 
   const app = create(
-    // eslint-disable-next-line react/react-in-jsx-scope
     <ThemeProvider
       value={{
         primaryColor: 'white',
