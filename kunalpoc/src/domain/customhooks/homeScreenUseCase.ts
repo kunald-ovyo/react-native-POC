@@ -66,9 +66,9 @@ const UsehomeScreenCase = () => {
           tempReferenceAllAssets.current.length,
         );
 
-        setHomeScreenData(value => {
+        setHomeScreenData(element => {
           return {
-            ...value,
+            ...element,
             allAssetsData: tempReferenceAllAssets.current,
           };
         });
